@@ -139,7 +139,7 @@ function proses_Callback(hObject, eventdata, handles)
        disp('Atribut Tiap Kriteria k =');
        disp(k);
        
-       % MENENTUKAN RATING KECOCOKAN
+       % NORMALISASI MATRIX
        % matriks m x n dengan ukuran sebanyak variabel x(input)
        [m, n] = size(dataX);
        
@@ -154,7 +154,7 @@ function proses_Callback(hObject, eventdata, handles)
            end
        end
        
-       disp('Matriks yang Sudah Ternomalisasi R =');
+       disp('Matriks yang Sudah Ter-nomalisasi R =');
        disp(R);
        
        for i=1 : m
@@ -163,13 +163,13 @@ function proses_Callback(hObject, eventdata, handles)
        
        %% TULIS HASIL PERHITUNGAN DAN RANKING KEDALAM FILE (.XLSX)
        perangkingan = V;
-       xlswrite('hasil.xlsx', perangkingan);
+       xlswrite('hasil_perhitungan.xlsx', perangkingan);
        
        perangkingan = sort(V,'descend');
        xlswrite('nilai_rangking.xlsx', perangkingan);
        
        %% TAMPILKAN DALAM UITABLE (GUI)
-       ReadData = xlsread('hasil.xlsx');
+       ReadData = xlsread('hasil_perhitungan.xlsx');
        set(handles.uitable3,'Data',ReadData); % hasil perhitungan
        
        ReadData = xlsread('nilai_rangking.xlsx');
